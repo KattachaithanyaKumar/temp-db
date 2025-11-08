@@ -4,7 +4,7 @@ const Landing = () => {
   return (
     <div>
       <Navbar />
-      <p className="text-(--text-light)">Landing</p>
+      <p className="text-(--text-light) max-w-[1000px] mx-auto">Landing</p>
     </div>
   );
 };
