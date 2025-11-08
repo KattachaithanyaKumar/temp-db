@@ -53,7 +53,6 @@ const Landing = () => {
 
         <section id="how-it-works" className="mt-30">
           <div className="max-w-[900px] mx-auto">
-            {/* Title + Description */}
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-3">How it Works</h2>
               <p className="text-base text-(--text-light) max-w-[600px] mx-auto">
@@ -70,7 +69,6 @@ const Landing = () => {
                   key={index}
                   className="flex flex-col items-center text-center space-y-4 md:w-1/4"
                 >
-                  {/* Step number with glow */}
                   <div className="relative w-12 h-12 flex items-center justify-center rounded-full bg-[var(--blue)] text-white font-bold text-lg shadow-[0_0_25px_var(--blue)]">
                     {index + 1}
                   </div>
@@ -91,7 +89,6 @@ const Landing = () => {
             {/* Glow background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--blue)_0%,transparent_70%)] opacity-40 blur-3xl"></div>
 
-            {/* Gradient box */}
             <div className="relative max-w-[900px] mx-auto text-center p-12 rounded-2xl bg-linear-to-t from-(--blue-dark) to-(--blue) shadow-[0_0_40px_rgba(41,41,218,0.5)] border border-(--blue)">
               <h1 className="text-4xl font-bold mb-4 text-white">
                 Ready to accelerate your workflow?
