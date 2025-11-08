@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LuBraces } from "react-icons/lu";
+import Button from "./Button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,12 +42,8 @@ const Navbar = () => {
 
         {/* Right - Buttons */}
         <div className="flex items-center gap-4">
-          <button className="px-6 py-2 font-bold text-md bg-(--blue) rounded-md cursor-pointer hover:opacity-80 transition-all">
-            Sign up for Free
-          </button>
-          <button className="px-6 py-2 font-bold text-md bg-(--light-gray) rounded-md cursor-pointer hover:opacity-80 transition-all">
-            Log in
-          </button>
+          <Button variant="primary">Sign Up for Free</Button>
+          <Button variant="secondary">Log In</Button>
         </div>
       </div>
     </div>
