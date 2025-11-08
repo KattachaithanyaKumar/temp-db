@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full p-5 border-b border-(--dark-gray) bg-(--background) transition-all duration-300 ${
+      className={`fixed top-0 w-full p-5 border-b border-(--dark-gray) bg-(--background) transition-all duration-300 z-50 ${
         isScrolled ? "shadow-xl" : "shadow-none"
       }`}
     >
