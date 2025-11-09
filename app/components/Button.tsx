@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
         text-(--white)
         px-6 py-2 
         font-bold text-md 
-        rounded-md 
+        rounded-xl 
         cursor-pointer 
         hover:opacity-80 
         transition-all 
