@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Temp DB",
+  title: "TempDB",
   description: "Create a temporary database for testing and POCs",
 };
 

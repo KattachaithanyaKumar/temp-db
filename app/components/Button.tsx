@@ -4,7 +4,7 @@ type Variant = "primary" | "secondary";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant: Variant;
+  variant?: Variant;
 }
 
 const Button: React.FC<ButtonProps> = ({
