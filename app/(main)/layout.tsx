@@ -4,9 +4,11 @@ import { usePathname } from "next/navigation";
 import Button from "../components/Button";
 import Sidebar from "../components/Sidebar";
 import { LuBell } from "react-icons/lu";
+import { useCheckAuth } from "../hooks/useCheckAuth";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
+  useCheckAuth("protected");
 
   return (
     <div className="flex">

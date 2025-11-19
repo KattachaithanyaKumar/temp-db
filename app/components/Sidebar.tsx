@@ -1,5 +1,6 @@
 "use client";
 
+import { createSupabaseClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -10,36 +11,51 @@ import {
   LuDatabase,
 } from "react-icons/lu";
 
+interface OptionProps {
+  href?: string;
+  icon: React.ReactNode;
+  label: string;
+  isActive?: boolean;
+  onClick?: () => void;
+}
+
 const Option = ({
   href,
   icon,
   label,
   isActive = false,
-}: {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  isActive?: boolean;
-}) => (
-  <Link
-    href={href}
-    className={`flex items-center gap-3 p-4 rounded-xl cursor-pointer hover:bg-(--blue-2) transition-all border ${
-      isActive ? "bg-(--blue-2) border-(--blue)" : "border-transparent"
-    }`}
-  >
-    <div>{icon}</div>
-    <span
-      className={`${
-        isActive ? "text-(--white)" : "text-(--text-light)"
-      } font-medium`}
-    >
-      {label}
-    </span>
-  </Link>
-);
+  onClick,
+}: OptionProps) => {
+  const baseClass = `flex items-center gap-3 p-4 rounded-xl cursor-pointer 
+    hover:bg-(--blue-2) transition-all border 
+    ${isActive ? "bg-(--blue-2) border-(--blue)" : "border-transparent"}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={baseClass}>
+        <div>{icon}</div>
+        <span
+          className={`${
+            isActive ? "text-(--white)" : "text-(--text-light)"
+          } font-medium`}
+        >
+          {label}
+        </span>
+      </Link>
+    );
+  }
+
+  return (
+    <button onClick={onClick} className={baseClass}>
+      <div>{icon}</div>
+      <span className="text-(--text-light) font-medium">{label}</span>
+    </button>
+  );
+};
 
 const Sidebar = () => {
   const pathName = usePathname();
+  const supabase = createSupabaseClient();
 
   return (
     <div className="p-6 bg-(--blue-dark) w-full h-screen max-w-[300px] border-r border-(--white-10) flex flex-col justify-between">
@@ -72,9 +88,11 @@ const Sidebar = () => {
           isActive={pathName === "/settings"}
         />
         <Option
-          href="/"
           icon={<LuLogOut size={20} color="(--text-light)" />}
           label="Log out"
+          onClick={async () => {
+            await supabase.auth.signOut();
+          }}
         />
       </div>
     </div>
