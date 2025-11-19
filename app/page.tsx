@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Button from "./components/Button";
@@ -7,8 +9,11 @@ const VideoPlayer = dynamic(() => import("@/app/components/VideoPlayer"));
 import { INFO_CARDS, STEPS } from "@/data/landingData";
 import InfoCard from "./components/InfoCard";
 import Footer from "./components/Footer";
+import { useCheckAuth } from "./hooks/useCheckAuth";
 
 const Landing = () => {
+  useCheckAuth("public");
+
   return (
     <div>
       <Navbar />
