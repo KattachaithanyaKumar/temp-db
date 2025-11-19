@@ -81,11 +81,14 @@ const AuthModal = (props: AuthModalProps) => {
       setLoadingGoogle(true);
       toast.loading("Redirecting to Google...", { id: "google-login" });
 
+      const redirectUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://temp-db.netlify.app/dashboard"
+          : "http://localhost:3000/dashboard";
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: {
-          redirectTo: `${window.location.origin}/dashboard`,
-        },
+        options: { redirectTo: redirectUrl },
       });
 
       if (error) {
