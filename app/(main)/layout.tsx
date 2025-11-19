@@ -5,10 +5,15 @@ import Button from "../components/Button";
 import Sidebar from "../components/Sidebar";
 import { LuBell } from "react-icons/lu";
 import { useCheckAuth } from "../hooks/useCheckAuth";
+import { useAppSelector } from "../hooks/useAppDispatch";
+import { FaRegUser } from "react-icons/fa";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
   useCheckAuth("protected");
+
+  const profileImage = useAppSelector((state) => state.auth.user)?.user_metadata
+    .avatar_url;
 
   return (
     <div className="flex">
@@ -26,6 +31,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="rounded-full p-3 border border-(--white-10) hover:bg-(--white-10) transition">
               <LuBell size={18} color="var(--white)" />
             </div>
+            {profileImage ? (
+              <div>
+                <img
+                  src={profileImage}
+                  alt=""
+                  className="size-[44px] rounded-full"
+                />
+              </div>
+            ) : (
+              <div className="rounded-full p-3 border border-(--white-10) hover:bg-(--white-10) transition">
+                <FaRegUser size={18} color="var(--white)" />
+              </div>
+            )}
           </div>
         </div>
 

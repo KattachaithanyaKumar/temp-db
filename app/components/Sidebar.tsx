@@ -26,7 +26,7 @@ const Option = ({
   isActive = false,
   onClick,
 }: OptionProps) => {
-  const baseClass = `flex items-center gap-3 p-4 rounded-xl cursor-pointer 
+  const baseClass = `w-full flex items-center gap-3 p-4 rounded-xl cursor-pointer 
     hover:bg-(--blue-2) transition-all border 
     ${isActive ? "bg-(--blue-2) border-(--blue)" : "border-transparent"}`;
 
