@@ -57,7 +57,7 @@ const AuthModal = (props: AuthModalProps) => {
         toast.success("Logged in successfully!");
         router.push("/dashboard");
       } else {
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
           email,
           password,
         });
@@ -93,9 +93,6 @@ const AuthModal = (props: AuthModalProps) => {
         console.error(error);
         return;
       }
-
-      toast.success("Google login successful!", { id: "google-login" });
-      router.push("/dashboard");
     } catch (err) {
       console.error(err);
       toast.error("Google login failed");
