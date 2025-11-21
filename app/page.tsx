@@ -74,7 +74,7 @@ const Landing = () => {
                   key={index}
                   className="flex flex-col items-center text-center space-y-4 md:w-1/4"
                 >
-                  <div className="relative w-12 h-12 flex items-center justify-center rounded-full bg-[var(--blue)] text-white font-bold text-lg shadow-[0_0_25px_var(--blue)]">
+                  <div className="relative w-12 h-12 flex items-center justify-center rounded-full bg-(--blue) text-white font-bold text-lg shadow-[0_0_25px_var(--blue)]">
                     {index + 1}
                   </div>
 

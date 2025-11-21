@@ -7,6 +7,7 @@ import { LuBell } from "react-icons/lu";
 import { useCheckAuth } from "../hooks/useCheckAuth";
 import { useAppSelector } from "../hooks/useAppDispatch";
 import { FaRegUser } from "react-icons/fa";
+import Image from "next/image";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
@@ -33,10 +34,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
             {profileImage ? (
               <div>
-                <img
+                <Image
                   src={profileImage}
-                  alt=""
-                  className="size-[44px] rounded-full"
+                  alt="avatar"
+                  width={44}
+                  height={44}
+                  className="rounded-full"
                 />
               </div>
             ) : (
