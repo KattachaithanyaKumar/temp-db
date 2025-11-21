@@ -24,8 +24,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="py-4 px-10 border-b border-(--dark-gray) shadow-2xl flex justify-between items-center ">
           <h2 className="text-base">
             <span className="text-(--text-light)">Home </span> <span> / </span>
-            {pathName.replace("/", "").charAt(0).toUpperCase() +
-              pathName.slice(2)}
+            {pathName.slice(1).split("/").join(" / ")}
           </h2>
           <div className="flex items-center gap-4">
             <Button>Upgrade</Button>

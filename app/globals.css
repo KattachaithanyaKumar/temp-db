@@ -23,3 +23,18 @@ body {
   font-family: var(--font-inter), sans-serif;
   scrollbar-gutter: stable;
 }
+
+.custom-select .ant-select-selector {
+  background: var(--blue-dark) !important;
+  color: var(--white) !important;
+  border-color: var(--light-gray) !important;
+}
+
+.ant-select-dropdown {
+  background: var(--blue-dark) !important;
+  color: var(--white) !important;
+}
+
+.ant-select-item-option-content {
+  color: var(--white) !important;
+}
