@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/app/components/Button";
+import { Field, FieldType } from "@/types/SchemaTypes";
 import { Input, Select } from "antd";
 import { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -17,18 +18,16 @@ const TYPES = [
 ];
 
 const SchemaTable = () => {
-  const [rows, setRows] = useState<{ field: string; type: string }[]>([
-    { field: "", type: "" },
-  ]);
+  const [rows, setRows] = useState<Field[]>([]);
 
-  const addRow = () => setRows([...rows, { field: "", type: "" }]);
+  const addRow = () => setRows([...rows, { id: Date.now().toString(), name: "", type: "" }]);
 
   const deleteRow = (index: number) =>
     setRows(rows.filter((_, i) => i !== index));
 
   const handleChange = (
     index: number,
-    key: "field" | "type",
+    key: "name" | "type",
     value: string
   ) => {
     setRows((prev) => {
@@ -40,12 +39,13 @@ const SchemaTable = () => {
 
   return (
     <div className="my-6">
-      <table className="w-full border border-(--light-gray) rounded-lg overflow-hidden text-(--white)">
+      <table className="w-full border border-(--light-gray) bg-(--dark-gray) rounded-lg overflow-hidden text-(--white)">
         <thead className="bg-(--blue-dark) text-left">
           <tr>
             <th className="p-3 font-medium">Field Name</th>
             <th className="p-3 font-medium">Type</th>
-            <th className="p-3 text-center font-medium">Action</th>
+            <th className="p-3 font-medium">Actions</th>
+            <th className="p-3 text-center font-medium">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -57,15 +57,10 @@ const SchemaTable = () => {
               <td className="p-3">
                 <Input
                   size="large"
-                  value={row.field}
-                  onChange={(e) => handleChange(index, "field", e.target.value)}
+                  value={row.name}
+                  onChange={(e) => handleChange(index, "name", e.target.value)}
                   placeholder="Enter field name"
                   className="w-full"
-                  style={{
-                    background: "var(--blue-dark)",
-                    color: "var(--white)",
-                    borderColor: "var(--light-gray)",
-                  }}
                 />
               </td>
               <td className="p-3">
@@ -78,8 +73,11 @@ const SchemaTable = () => {
                     value: type,
                     label: type,
                   }))}
-                  className="w-full custom-select"
+                  className="w-full"
                 />
+              </td>
+              <td>
+                {row.type === ""}
               </td>
               <td className="p-3 text-center">
                 <button
